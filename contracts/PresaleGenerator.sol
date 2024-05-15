@@ -58,7 +58,8 @@ contract PresaleGenerator is Ownable {
         uint256 _liquidityPercent,
         uint256 _baseDecimals
     ) internal pure returns (uint256) {
-        uint256 amount = (_hardcap * _presaleRate) / uint256(10 ** _baseDecimals);
+        uint256 amount = (_hardcap * _presaleRate) /
+            uint256(10 ** _baseDecimals);
         uint256 liquidityRequired = (_hardcap * _liquidityPercent) /
             _listingRate /
             (10 ** 21);

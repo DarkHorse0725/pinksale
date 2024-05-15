@@ -203,7 +203,11 @@ contract Presale is ReentrancyGuard {
         require(presaleInfo.minSpendPerBuyer <= _amount, "MIN SPEND!");
 
         // tranfer token
-        presaleInfo.presaleToken.safeTransferFrom(msg.sender, address(this), _amount);
+        presaleInfo.presaleToken.safeTransferFrom(
+            msg.sender,
+            address(this),
+            _amount
+        );
 
         BuyerInfo storage buyer = BUYERS[msg.sender];
         uint256 amount_in = _amount;
@@ -335,8 +339,9 @@ contract Presale is ReentrancyGuard {
         // base token liquidity
         uint256 baseLiquidity = (status.TOTAL_BASE_COLLECTED *
             presaleInfo.liquidityPercent) / 1000;
-
-        WETH.deposit{value: baseLiquidity}();
+        if (address(presaleInfo.baseToken) == address(WETH)) {
+            WETH.deposit{value: baseLiquidity}();
+        }
 
         presaleInfo.baseToken.approve(
             address(smartLockForwarder),
