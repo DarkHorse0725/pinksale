@@ -62,7 +62,7 @@ contract PresaleGenerator is Ownable {
             uint256(10 ** _baseDecimals);
         uint256 liquidityRequired = (_hardcap * _liquidityPercent) /
             _listingRate /
-            (10 ** 21);
+            (10 ** (_baseDecimals + 3));
         uint256 tokensRequiredForPresale = amount + liquidityRequired;
         return tokensRequiredForPresale;
     }
