@@ -29,7 +29,7 @@ const config: HardhatUserConfig = {
   },
   networks: {
     testnet: {
-      url: "https://sepolia.infura.io/v3/52ee1cb21e8a4095aef5f92fa50f70e3",
+      url: "https://sepolia.infura.io/v3/333dde50efb045c3b2c60a9203a37778",
       accounts: 
       process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : []
     },
